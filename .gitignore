@@ -1,0 +1,6 @@
+.env
+*.swp
+*-local*
+
+\.idea/
+mysql/yii

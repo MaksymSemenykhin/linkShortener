@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  web:
+    container_name: web
+    build:
+      dockerfile: DockerfileWeb
+      context: ./nginx
+    environment:
+      - FASTCGI_PASS_HOST=php
+    ports:
+      - '80:80'
+    volumes:
+      # Application testing
+      - ./app:/app:delegated
+    links:
+      - php
