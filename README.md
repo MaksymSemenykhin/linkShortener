@@ -1,0 +1,36 @@
+# docker installation REQUIREMENTS
+------------
+  - Git
+  - Docker 
+  - Docker-compose
+  - console or terminal
+  - 512 Memory 
+  
+INSTALLATION
+------------
+1. Install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+2. Install docker [ubuntu](https://docs.docker.com/engine/install/ubuntu/) or [windows](https://docs.docker.com/engine/install/ubuntu/)
+3. Install docker-compose [ubuntu](https://docs.docker.com/compose/install/#linux) or [windows](https://docs.docker.com/compose/install/#windows)
+4. Copy .env-exmple as .env
+5. Update .env config if its required
+6. cd dockerized-yii2
+7. Start docker-compose
+    * On Windows with wsl enabled ./start.sh or ./start-daemon.sh
+    * On Ubuntu bash ./start.sh or bash ./start-daemon.sh
+    * On Windows without wsl ./start.bat or ./start-daemon.bat
+8. Composer install
+9. yii init
+10 yii migrate
+
+
+```sh
+$ git clone https://github.com/MaksymSemenykhin/linkShortener.git ./linkShortener
+$ cd ./linkShortener
+$ cp .env-exmple as .env
+$ cp dockerized-yii2/app
+$ bash ./start.sh
+cd dockerized-yii2
+docker exec -t php composer install
+docker exec -t php init --env=Development --overwrite=All
+docker exec -t php yii migrate --interactive=0
+```
