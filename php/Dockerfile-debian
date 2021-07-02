@@ -7,11 +7,11 @@ FROM php:${PHP_BASE_IMAGE_VERSION}
 # Install system packages for PHP extensions recommended for Yii 2.0 Framework
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
-    apt-get -y install \
+    apt-get -yq install \
         gnupg2 && \
     apt-key update && \
     apt-get update && \
-    apt-get -y install \
+    apt-get -yq install \
             g++ \
             git \
             curl \
@@ -94,7 +94,7 @@ RUN chmod 755 \
         /usr/local/bin/composer
 # Install composer
 ARG COMPOSER_VERSION
-RUN curl -sS https://getcomposer.org/installer | php -- \
+RUN curl -sS --silent https://getcomposer.org/installer | php -- \
         --version=${COMPOSER_VERSION} \
         --filename=composer.phar \
         --install-dir=/usr/local/bin && \
@@ -112,7 +112,7 @@ RUN if command -v a2enmod >/dev/null 2>&1; then \
     ;fi
 
 # Install Yii framework bash autocompletion
-RUN curl -L https://raw.githubusercontent.com/yiisoft/yii2/master/contrib/completion/bash/yii \
+RUN curl -L --silent https://raw.githubusercontent.com/yiisoft/yii2/master/contrib/completion/bash/yii \
         -o /etc/bash_completion.d/yii
 
 # Application environment

@@ -7,7 +7,4 @@ print_title "Building conteiners"
 docker-compose build &&
 
 print_title "Starting conteiners"
-docker-compose up
-
-
-
+docker-compose up -d
