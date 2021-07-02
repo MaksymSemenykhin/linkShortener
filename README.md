@@ -28,7 +28,6 @@ $ git clone https://github.com/MaksymSemenykhin/linkShortener.git ./linkShortene
 $ cd ./linkShortener
 $ cp .env-exmple .env
 $ bash ./start.sh
-cd dockerized-yii2
 docker exec -t php composer install
 docker exec -t php init --env=Development --overwrite=All
 docker exec -t php yii migrate --interactive=0
