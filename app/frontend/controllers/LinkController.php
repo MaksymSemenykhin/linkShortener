@@ -29,14 +29,13 @@ class LinkController extends Controller
                 'only' => ['index','create','update','delete','link'],
                 'rules' => [
                     [
-                        'actions' => ['index','create','update','delete'],
+                        'actions' => ['index','create','update','delete','link'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],[
                         'actions' => ['link'],
                         'allow' => true,
                         'roles' => ['?'],
-
                     ]
                 ],
             ],
@@ -51,13 +50,16 @@ class LinkController extends Controller
 
     public function actionLink()
     {
-        $model = $this->findModel(Yii::$app->request->queryParams);
+
+        if (($model = Link::findOne(Yii::$app->request->queryParams)) == null) {
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        }
 
         if(
             $model->status != Link::$STATUS_ACTIVE ||
             $model->hit_limit && $model->statistics->count >= $model->hit_limit
         ){
-            throw new \yii\web\NotFoundHttpException();
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         }
         $model->statistics->count++;
         if(!$model->statistics->save())
