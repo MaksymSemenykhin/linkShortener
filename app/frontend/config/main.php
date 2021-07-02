@@ -6,8 +6,9 @@ $params = array_merge(
     require __DIR__ . '/params-local.php'
 );
 
-return [
+$config = [
     'id' => 'app-frontend',
+    'name' => 'My links',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
@@ -41,8 +42,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'q/<token:[A-Za-z0-9]+>' => 'link/link',
             ],
         ],
     ],
     'params' => $params,
 ];
+
+return $config;
