@@ -27,7 +27,7 @@ INSTALLATION
 ```sh
 $ git clone https://github.com/MaksymSemenykhin/linkShortener.git ./linkShortener
 $ cd ./linkShortener
-$ cp .env-exmple as .env
+$ cp .env-exmple .env
 $ cp dockerized-yii2/app
 $ bash ./start.sh
 cd dockerized-yii2
