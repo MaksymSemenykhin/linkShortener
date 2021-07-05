@@ -75,7 +75,7 @@ class LinkController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new LinkSearch(['user'=>\yii::$app->user->id]);
+        $searchModel = new LinkSearch(['user_id'=>\yii::$app->user->id]);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
