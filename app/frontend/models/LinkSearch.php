@@ -59,6 +59,7 @@ class LinkSearch extends Link
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'user_id' => \yii::$app->user->id,
             'ttl' => $this->ttl,
             'hit_limit' => $this->hit_limit,
         ]);
@@ -70,7 +71,6 @@ class LinkSearch extends Link
             ->andFilterWhere(['like', 'status', $this->status]);
 
         $query->orderBy(['id' => SORT_DESC]);
-
         return $dataProvider;
     }
 }
